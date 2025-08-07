@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\TelegramController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
+
+Route::post('/webhook-wf3ohocsb499v2', [TelegramController::class, 'handle'])->name('webhook');
 
 Route::get('/', function () {
     return view('welcome');
