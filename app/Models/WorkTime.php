@@ -18,4 +18,9 @@ class WorkTime extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getDurationAttribute()
+    {
+        return $this->end_time ? round($this->start_time->diffInHours($this->end_time), 1) : 0;
+    }
 }

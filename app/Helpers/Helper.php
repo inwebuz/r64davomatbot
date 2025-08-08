@@ -18,6 +18,6 @@ class Helper
 
     public static function formatDatetime($datetime)
     {
-        return $datetime->format('Y-m-d H:i');
+        return $datetime->format('d.m.Y H:i');
     }
 }

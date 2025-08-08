@@ -21,9 +21,13 @@ class EndWorkCommand extends Command
             $bot->sendMessage(__('You are not registered'));
             return;
         }
-        $workTime = WorkTime::whereNull('end_time')->where('user_id', $user->id)->first();
+        $workTime = WorkTime::where('user_id', $user->id)->latest()->first();
         if (!$workTime) {
             $bot->sendMessage(__('You have not started work'));
+            return;
+        }
+        if ($workTime->end_time) {
+            $bot->sendMessage(__('You have already ended work'));
             return;
         }
         $workTime->end_time = now();

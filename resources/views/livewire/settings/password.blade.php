@@ -31,7 +31,7 @@
                 </div>
 
                 <x-action-message class="me-3" on="password-updated">
-                    {{ __('Saved.') }}
+                    {{ __('Saved') }}
                 </x-action-message>
             </div>
         </form>
