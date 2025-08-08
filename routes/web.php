@@ -11,7 +11,7 @@ use App\Livewire\WorkTimes;
 use App\Livewire\WorkTimesEdit;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/webhook-wf3ohocsb499v2', [TelegramController::class, 'handle'])->name('webhook');
+Route::post('/webhook-wf3ohocsb499v2', TelegramController::class)->name('webhook');
 
 Route::get('/', function () {
     return view('welcome');
