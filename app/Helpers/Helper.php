@@ -20,4 +20,18 @@ class Helper
     {
         return $datetime->format('d.m.Y H:i');
     }
+
+    public static function convertHoursToHoursMinutes($hours): array
+    {
+        $res = [];
+        $res[0] = floor($hours);
+        $res[1] = round(($hours - $res[0]) * 60);
+        return $res;
+    }
+
+    public static function formatHoursMinutes($hours): string
+    {
+        $hoursMinutes = self::convertHoursToHoursMinutes($hours);
+        return $hoursMinutes[0] . ' ' . __('hours') . ' ' . $hoursMinutes[1] . ' ' . __('minutes');
+    }
 }

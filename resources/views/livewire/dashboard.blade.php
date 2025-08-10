@@ -25,7 +25,7 @@
             @foreach ($stats as $stat)
                 <x-table.row :key="$stat['employee']->id">
                     <x-table.cell> {{ $stat['employee']->name }} </x-table.cell>
-                    <x-table.cell class="whitespace-nowrap">{{ $stat['totalHours'] }} {{ __('hours') }}</x-table.cell>
+                    <x-table.cell class="whitespace-nowrap">{{ Helper::formatHoursMinutes($stat['totalHours']) }}</x-table.cell>
                     <x-table.cell class="whitespace-nowrap">{{ $stat['totalDays'] }} {{ __('work days') }}</x-table.cell>
                 </x-table.row>
             @endforeach

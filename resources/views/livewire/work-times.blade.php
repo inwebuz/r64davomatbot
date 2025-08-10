@@ -32,7 +32,7 @@
                         <x-table.cell> {{ $workTime->user?->name }} </x-table.cell>
                         <x-table.cell class="whitespace-nowrap">{{ Helper::formatDatetime($workTime->start_time) }}</x-table.cell>
                         <x-table.cell class="whitespace-nowrap">{{ $workTime->end_time ? Helper::formatDatetime($workTime->end_time) : '-' }}</x-table.cell>
-                        <x-table.cell class="whitespace-nowrap">{{ $workTime->duration . ' ' . __('hours') }}</x-table.cell>
+                        <x-table.cell class="whitespace-nowrap">{{ Helper::formatHoursMinutes($workTime->duration) }}</x-table.cell>
                     </x-table.row>
                 @endforeach
             </x-table>

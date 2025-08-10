@@ -21,6 +21,6 @@ class WorkTime extends Model
 
     public function getDurationAttribute()
     {
-        return $this->end_time ? round($this->start_time->diffInHours($this->end_time), 1) : 0;
+        return $this->end_time ? round($this->start_time->diffInHours($this->end_time), 2) : 0;
     }
 }
