@@ -30,7 +30,7 @@ class EndWorkTimes extends Command
         // Log::info('Ending work times');
         $now = now();
         $start = now()->startOfDay();
-        $endTime = now()->setHour(19)->setMinute(0)->setSecond(0);
+        $endTime = now()->setHour(18)->setMinute(0)->setSecond(0);
         if ($now->isAfter($endTime)) {
             WorkTime::where('start_time', '>=', $start)->whereNull('end_time')->update(['end_time' => $endTime]);
         }
