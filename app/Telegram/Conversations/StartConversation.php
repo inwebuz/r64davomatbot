@@ -57,11 +57,12 @@ class StartConversation extends Conversation
         }
 
         // create user
+        $telegramId = $bot->userId();
         $user = User::create([
             'name' => $this->registerData['name'],
-            'email' => $phone . '@' . Helper::removeHttp(config('app.url')),
+            'email' => $phone . str($telegramId)->replace('-', '') . '@' . Helper::removeHttp(config('app.url')),
             'password' => Hash::make(Str::random(10)),
-            'telegram_id' => $bot->userId(),
+            'telegram_id' => $telegramId,
             'phone' => $phone,
         ]);
         $user->assignRole('employee');
