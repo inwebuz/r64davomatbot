@@ -34,7 +34,7 @@ class WorkTimes extends Component
         if ($this->filters['user_id']) {
             $query->where('user_id', $this->filters['user_id']);
         }
-        return $query->latest()->paginate(10);
+        return $query->latest()->paginate(50);
     }
 
     public function deleteWorkTime($id)
