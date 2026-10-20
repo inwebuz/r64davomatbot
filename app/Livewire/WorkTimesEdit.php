@@ -10,14 +10,20 @@ class WorkTimesEdit extends Component
 {
     public WorkTime $workTime;
 
-    public string $startTime;
-    public string|null $endTime;
+    public string $startTime = '';
+    public ?string $endTime = null;
 
-    public function mount(WorkTime $workTime)
+    public function mount(WorkTime $workTime): void
     {
         $this->workTime = $workTime;
-        $this->startTime = Helper::formatDatetime($workTime->start_time);
-        $this->endTime = $workTime->end_time ? Helper::formatDatetime($workTime->end_time) : null;
+
+        $this->startTime = Helper::formatDatetime(
+            $workTime->start_time
+        );
+
+        $this->endTime = $workTime->end_time
+            ? Helper::formatDatetime($workTime->end_time)
+            : null;
     }
 
     public function render()
@@ -25,7 +31,7 @@ class WorkTimesEdit extends Component
         return view('livewire.work-times-edit');
     }
 
-    public function update()
+    public function update(): void
     {
         $this->workTime->update([
             'start_time' => $this->startTime,
