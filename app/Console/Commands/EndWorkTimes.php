@@ -31,8 +31,6 @@ class EndWorkTimes extends Command
         $now = now();
         $start = now()->startOfDay();
         $endTime = now()->setHour(18)->setMinute(0)->setSecond(0);
-        if ($now->isAfter($endTime)) {
-            WorkTime::where('start_time', '>=', $start)->whereNull('end_time')->update(['end_time' => $endTime]);
-        }
+        WorkTime::where('start_time', '>=', $start)->where('start_time', '<', $endTime)->whereNull('end_time')->update(['end_time' => $endTime]);
     }
 }
