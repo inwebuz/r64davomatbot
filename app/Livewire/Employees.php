@@ -32,6 +32,6 @@ class Employees extends Component
     {
         return User::role('employee')
             ->tap(fn ($query) => $this->sortBy ? $query->orderBy($this->sortBy, $this->sortDirection) : $query)
-            ->paginate(10);
+            ->paginate(50);
     }
 }

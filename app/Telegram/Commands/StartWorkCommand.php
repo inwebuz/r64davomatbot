@@ -21,6 +21,15 @@ class StartWorkCommand extends Command
             $bot->sendMessage(__('You are not registered'));
             return;
         }
+        $alreadyStarted = WorkTime::where('user_id', $user->id)
+            ->whereDate('start_time', today()->toDateString())
+            ->exists();
+
+        if ($alreadyStarted) {
+            $bot->sendMessage(__('You have already started work today'));
+            return;
+        }
+
         $workTime = WorkTime::create([
             'user_id' => $user->id,
             'start_time' => now(),
